@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import translations from './translations';
 
 const MyContext = React.createContext({});
 
@@ -6,7 +7,8 @@ export class MyProvider extends Component {
   state = {
     collections: [],
     language: "pl",
-    newCollection: {}
+    newCollection: {},
+    translations: translations
   };
   render() {
     return (
