@@ -1,16 +1,16 @@
 export default {
   pl: {
     navbar: {
-      menu: "",
-      create: "",
-      learn: ""
+      menu: 'Menu',
+      create: 'Stwórz',
+      learn: 'Ucz się'
     }
   },
   en: {
     navbar: {
-      menu: "",
-      create: "",
-      learn: ""
+      menu: 'Menu',
+      create: 'Create',
+      learn: 'Learn'
     }
   }
 };
