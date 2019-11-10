@@ -6,7 +6,7 @@ export class MyProvider extends Component {
   state = {
     collections: [],
     language: "pl",
-    newCollection: []
+    newCollection: {},
   };
   render() {
     return (
