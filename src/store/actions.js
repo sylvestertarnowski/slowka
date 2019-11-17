@@ -1,6 +1,8 @@
 export const ADD_WORD = 'ADD_WORD';
 export const REMOVE_WORD = 'REMOVE_WORD';
 export const UPDATE_WORD = 'UPDATE_WORD';
+export const ADD_TITLE = 'ADD_TITLE';
+export const EDIT_TITLE = 'EDIT_TITLE';
 
 export const CollectionActions = {
   READ_COLLECTION: 'READ_COLLECTION',
