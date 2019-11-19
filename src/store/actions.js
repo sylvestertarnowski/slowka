@@ -11,23 +11,27 @@ export const CollectionActions = {
   DELETE_COLLECTION: 'DELETE_COLLECTION'
 };
 
-export const addWord = word => {
-  return {
-    type: ADD_WORD,
-    payload: { word }
-  };
-};
+export const addWord = ({ word }) => ({
+  type: ADD_WORD,
+  payload: { word }
+});
 
-export const removeWord = id => {
-  return {
-    type: REMOVE_WORD,
-    payload: { id }
-  };
-};
+export const removeWord = ({ id }) => ({
+  type: REMOVE_WORD,
+  payload: { id }
+});
 
-export const updateWord = ({ id, word }) => {
-  return {
-    type: UPDATE_WORD,
-    payload: { word, id }
-  };
-};
+export const updateWord = ({ id, word }) => ({
+  type: UPDATE_WORD,
+  payload: { word, id }
+});
+
+export const addTitle = ({ title }) => ({
+  type: ADD_TITLE,
+  payload: { title }
+});
+
+export const editTitle = ({ title }) => ({
+  type: EDIT_TITLE,
+  payload: { title }
+});
