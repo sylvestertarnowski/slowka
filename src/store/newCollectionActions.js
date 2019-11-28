@@ -4,19 +4,19 @@ export const ITEM_UPDATE = 'ITEM_UPDATE';
 export const TITLE_ADD = 'TITLE_ADD';
 export const TITLE_EDIT = 'TITLE_EDIT';
 
-export const addWord = ({ item }) => ({
+export const addItem = ({word, translation}) => ({
   type: ITEM_ADD,
-  payload: { item }
+  payload: {word, translation}
 });
 
-export const removeWord = ({ id }) => ({
+export const removeItem = ({ id }) => ({
   type: ITEM_REMOVE,
   payload: { id }
 });
 
-export const updateWord = ({ id, item }) => ({
+export const updateItem = ({ id, word, translation }) => ({
   type: ITEM_UPDATE,
-  payload: { item, id }
+  payload: { id, word, translation }
 });
 
 export const addTitle = ({ title }) => ({
