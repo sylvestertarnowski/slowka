@@ -1,7 +1,7 @@
 import {
-  WORD_ADD,
-  WORD_REMOVE,
-  WORD_UPDATE,
+  ITEM_ADD,
+  ITEM_REMOVE,
+  ITEM_UPDATE,
   TITLE_ADD,
   TITLE_EDIT,
 } from './newCollectionActions';
@@ -14,17 +14,17 @@ const newCollectionShape = {
 export function newCollection(state = newCollectionShape, action) {
   const { type, payload } = action;
   switch (type) {
-    case WORD_ADD:
+    case ITEM_ADD:
       return { title: state.title, collection: [...state.collection, payload] };
     case TITLE_ADD:
     case TITLE_EDIT:
       return { ...state, title: payload.title };
-    case WORD_REMOVE:
+    case ITEM_REMOVE:
       return {
         title: state.title,
         collection: [...state.collection.filter(item => item.id !== payload.id)]
       };
-    case WORD_UPDATE:
+    case ITEM_UPDATE:
       return {
         title: state.title,
         collection: [
