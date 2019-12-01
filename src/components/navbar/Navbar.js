@@ -1,12 +1,22 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import './Navbar.css';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 
 export const Navbar = ({ menu, create, learn }) => {
+  const history = useHistory();
+
   return (
     <nav className="Navbar">
       <ul>
+        <li>
+          <button 
+          onClick={() => history.goBack()}>
+            <span role="img" aria-label="go back">
+              ⬅️
+            </span>
+          </button>
+        </li>
         <li>
           <Link to="/menu">{menu}</Link>
         </li>

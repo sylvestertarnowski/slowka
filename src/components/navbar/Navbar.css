@@ -1,36 +1,51 @@
 .Navbar {
-    display: flex;
-    background: lightblue;
-    padding: 0;
+  display: flex;
+  background: lightblue;
+  padding: 0;
 }
 
 .Navbar > ul {
-    display: flex;
-    margin: 0;
-    margin-left: auto;
-    margin-right: 20px;
-    list-style-type: none;
-    height: 100%;
+  display: flex;
+  margin: 0;
+  margin-right: 20px;
+  flex: 1;
+  list-style-type: none;
+  height: 100%;
+}
+
+.Navbar > ul > li:nth-of-type(2) {
+  margin-left: auto;
 }
 
 .Navbar > ul > li {
-    display: flex;
-    align-content: center;
-    padding: 15px;
-    transition: background-color 0.4s;
+  display: flex;
+  align-content: center;
+  padding: 15px;
+  transition: background-color 0.4s;
 }
 
 .Navbar > ul > li:hover {
-    background-color: rgb(138, 209, 233);
+  background-color: rgb(138, 209, 233);
 }
 
 .Navbar > ul > li > a,
 .Navbar > ul > li > a:active,
-.Navbar > ul > li > a:visited {
-    color: black;
-    align-content: center;
-    font-weight: 600;
-    font-size: 1.25rem;
-    line-height: 1.25rem;
-    text-decoration: none;
+.Navbar > ul > li > a:visited,
+.Navbar > ul > li > button {
+  color: black;
+  align-content: center;
+  font-weight: 600;
+  font-size: 1.25rem;
+  line-height: 1.25rem;
+  text-decoration: none;
 }
+
+.Navbar > ul > li > button,
+.Navbar > ul > li > button:focus {
+  background: transparent;
+  font-size: 2rem;
+  border: none;
+  outline: none;
+}
+
+
