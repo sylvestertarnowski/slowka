@@ -2,8 +2,14 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import CollectionItemInput from '../common/CollectionItemInput';
+import { Collection } from '../../store/newCollectionReducers';
+import { GlobalStore } from '../../store';
 
-const Create = ({ newCollection }) => {
+interface P {
+  newCollection: Collection;
+}
+
+const Create: React.FC<P> = ({ newCollection }) => {
   const { collection, title } = newCollection;
 
   return (
@@ -33,7 +39,7 @@ Create.defaultProps = {
   }
 };
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state: GlobalStore) => ({
   newCollection: state.newCollection
 });
 

@@ -4,27 +4,27 @@ export const ITEM_UPDATE = 'ITEM_UPDATE';
 export const TITLE_ADD = 'TITLE_ADD';
 export const TITLE_EDIT = 'TITLE_EDIT';
 
-export const addItem = ({word, translation}) => ({
+export const addItem = ({word, translation}: {word: string, translation: string}) => ({
   type: ITEM_ADD,
   payload: {word, translation}
 });
 
-export const removeItem = ({ id }) => ({
+export const removeItem = ({ id }: {id: number}) => ({
   type: ITEM_REMOVE,
   payload: { id }
 });
 
-export const updateItem = ({ id, word, translation }) => ({
+export const updateItem = ({ id, word, translation }: {id: number, word: string, translation: string}) => ({
   type: ITEM_UPDATE,
   payload: { id, word, translation }
 });
 
-export const addTitle = ({ title }) => ({
+export const addTitle = ({ title }: {title: string}) => ({
   type: TITLE_ADD,
   payload: { title }
 });
 
-export const editTitle = ({ title }) => ({
+export const editTitle = ({ title }: {title: string}) => ({
   type: TITLE_EDIT,
   payload: { title }
 });

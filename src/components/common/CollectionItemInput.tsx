@@ -4,13 +4,17 @@ import _uniqueId from 'lodash/uniqueId';
 import { connect } from 'react-redux';
 import { addItem } from '../../store/newCollectionActions';
 
-const CollectionItemInput = ({ addItem }) => {
+interface P {
+  addItem: (config: { word: string; translation: string }) => any;
+}
+
+const CollectionItemInput: React.FC<P> = ({ addItem }) => {
   const [word, setWord] = useState('');
   const [translation, setTranslation] = useState('');
   const [wordId] = useState(_uniqueId('word-'));
   const [translationId] = useState(_uniqueId('translation-'));
 
-  const handleClick = e => {
+  const handleClick = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     e.preventDefault();
     addItem({ word, translation });
   };
@@ -41,7 +45,7 @@ const CollectionItemInput = ({ addItem }) => {
 };
 
 CollectionItemInput.propTypes = {
-  addItem: PropTypes.func
+  addItem: PropTypes.func.isRequired
 };
 
 CollectionItemInput.defaultProps = {

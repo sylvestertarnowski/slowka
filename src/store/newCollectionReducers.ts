@@ -6,12 +6,22 @@ import {
   TITLE_EDIT,
 } from './newCollectionActions';
 
-const newCollectionShape = {
+export interface Collection {
+  title: string;
+  collection: any[];
+}
+
+export interface Action {
+  type: string;
+  payload: {[key: string]: any}
+}
+
+const newCollectionInitialState: Collection = {
   title: '',
   collection: []
 };
 
-export function newCollection(state = newCollectionShape, action) {
+export function newCollection(state = newCollectionInitialState, action: Action) {
   const { type, payload } = action;
   switch (type) {
     case ITEM_ADD:
