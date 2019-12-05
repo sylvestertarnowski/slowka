@@ -1,12 +1,15 @@
 import { createStore, combineReducers } from 'redux';
 import { newCollection, Collection } from './newCollectionReducers';
+import { collections } from './collectionsReducers';
 
 export interface GlobalStore {
   newCollection: Collection;
+  collections: Collection[];
 }
 
 const rootReducer = combineReducers({
-  newCollection
+  newCollection,
+  collections
 });
 
 export const store = createStore(

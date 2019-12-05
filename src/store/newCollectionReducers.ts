@@ -3,7 +3,7 @@ import {
   ITEM_REMOVE,
   ITEM_UPDATE,
   TITLE_ADD,
-  TITLE_EDIT,
+  TITLE_EDIT
 } from './newCollectionActions';
 
 export interface Collection {
@@ -11,9 +11,9 @@ export interface Collection {
   collection: any[];
 }
 
-export interface Action {
+export interface MyAction<P> {
   type: string;
-  payload: {[key: string]: any}
+  payload: P;
 }
 
 const newCollectionInitialState: Collection = {
@@ -21,7 +21,10 @@ const newCollectionInitialState: Collection = {
   collection: []
 };
 
-export function newCollection(state = newCollectionInitialState, action: Action) {
+export function newCollection(
+  state = newCollectionInitialState,
+  action: MyAction<any>
+) {
   const { type, payload } = action;
   switch (type) {
     case ITEM_ADD:
