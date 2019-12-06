@@ -10,6 +10,7 @@ interface P {
 }
 
 const CollectionItemInput: React.FC<P> = ({ addItem }) => {
+  const firstInput = React.createRef<HTMLInputElement>();
   const [word, setWord] = useState('');
   const [translation, setTranslation] = useState('');
   const [wordId] = useState(_uniqueId('word-'));
@@ -18,6 +19,9 @@ const CollectionItemInput: React.FC<P> = ({ addItem }) => {
   const handleClick = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     e.preventDefault();
     addItem({ word, translation });
+    setWord('');
+    setTranslation('');
+    firstInput.current && firstInput.current.focus()
   };
 
   return (
@@ -25,6 +29,7 @@ const CollectionItemInput: React.FC<P> = ({ addItem }) => {
       <label htmlFor={wordId}>Word:</label>
       <input
         type="text"
+        ref={firstInput}
         value={word}
         id={wordId}
         onChange={e => setWord(e.target.value)}
@@ -46,7 +51,7 @@ const CollectionItemInput: React.FC<P> = ({ addItem }) => {
 };
 
 CollectionItemInput.propTypes = {
-  addItem: PropTypes.func.isRequired,
+  addItem: PropTypes.func.isRequired
 };
 
 const mapDispatchToProps = {
