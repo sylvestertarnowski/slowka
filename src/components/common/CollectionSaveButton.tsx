@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { saveCollection } from '../../store/collectionsActions';
@@ -10,22 +10,41 @@ interface P {
   saveCollection: (config: {
     collection: Collection;
   }) => {
-    action: string;
+    type: string;
     payload: { collection: Collection };
   };
+  collections: Collection[];
 }
 
 const CollectionSaveButton: React.FC<P> = ({
   saveCollection,
-  newCollection
+  newCollection,
+  collections
 }) => {
+  const [showWarning, setShowWarning] = useState(false);
+  const [showSuccess, setShowSuccess] = useState(false);
+
+  const handleSave = () => {
+    const isTitleTaken = collections.some(
+      ({ title }) => title === newCollection.title
+    );
+    if (isTitleTaken) {
+      setShowWarning(true);
+    } else {
+      saveCollection({ collection: newCollection });
+      setShowWarning(false);
+      setShowSuccess(true);
+    }
+  };
+
   return (
-    <button
-      type="button"
-      onClick={() => saveCollection({ collection: newCollection })}
-    >
-      Save Collection
-    </button>
+    <>
+      <button type="button" onClick={handleSave}>
+        Save Collection
+      </button>
+      {showWarning && <div color="red">List title already exists!</div>}
+      {showSuccess && <div color="green">Success!</div>}
+    </>
   );
 };
 
@@ -34,11 +53,13 @@ CollectionSaveButton.propTypes = {
     title: PropTypes.string.isRequired,
     collection: PropTypes.array.isRequired
   }).isRequired,
-  saveCollection: PropTypes.func.isRequired
+  saveCollection: PropTypes.func.isRequired,
+  collections: PropTypes.array.isRequired
 };
 
-const mapStateToProps = ({ newCollection }: GlobalStore) => ({
-  newCollection
+const mapStateToProps = ({ newCollection, collections }: GlobalStore) => ({
+  newCollection,
+  collections
 });
 
 const mapDispatchToProps = {
