@@ -6,16 +6,16 @@ export const COLLECTION_EDIT = 'COLLECTION_EDIT';
 export const COLLECTION_DELETE = 'COLLECTION_DELETE';
 
 export const saveCollection = ({ collection }: { collection: Collection }) => ({
-  action: COLLECTION_SAVE,
+  type: COLLECTION_SAVE,
   payload: { collection }
 });
 
 export const deleteCollection = ({ title }: { title: string }) => ({
-  action: COLLECTION_DELETE,
+  type: COLLECTION_DELETE,
   payload: { title }
 });
 
 export const editCollection = ({ collection }: { collection: Collection }) => ({
-  action: COLLECTION_EDIT,
+  type: COLLECTION_EDIT,
   payload: { collection }
 });

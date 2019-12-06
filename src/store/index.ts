@@ -9,7 +9,7 @@ export interface GlobalStore {
 
 const rootReducer = combineReducers({
   newCollection,
-  collections
+  collections,
 });
 
 export const store = createStore(
