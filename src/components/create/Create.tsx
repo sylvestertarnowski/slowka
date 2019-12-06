@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import CollectionItemInput from '../common/CollectionItemInput';
 import { Collection } from '../../store/newCollectionReducers';
 import { GlobalStore } from '../../store';
+import CollectionSaveButton from '../common/CollectionSaveButton';
 
 interface P {
   newCollection: Collection;
@@ -21,6 +22,7 @@ const Create: React.FC<P> = ({ newCollection }) => {
         ))}
       </ul>
       <CollectionItemInput />
+      <CollectionSaveButton />
     </div>
   );
 };

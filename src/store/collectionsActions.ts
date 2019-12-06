@@ -5,7 +5,7 @@ export const COLLECTION_SAVE = 'COLLECTION_SAVE';
 export const COLLECTION_EDIT = 'COLLECTION_EDIT';
 export const COLLECTION_DELETE = 'COLLECTION_DELETE';
 
-export const saveCollection = ({ collection }: Collection) => ({
+export const saveCollection = ({ collection }: { collection: Collection }) => ({
   action: COLLECTION_SAVE,
   payload: { collection }
 });
@@ -15,7 +15,7 @@ export const deleteCollection = ({ title }: { title: string }) => ({
   payload: { title }
 });
 
-export const editCollection = ({ collection }: Collection) => ({
+export const editCollection = ({ collection }: { collection: Collection }) => ({
   action: COLLECTION_EDIT,
   payload: { collection }
 });

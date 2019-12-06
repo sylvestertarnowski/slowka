@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import _uniqueId from 'lodash/uniqueId';
 import { connect } from 'react-redux';
 import { addItem } from '../../store/newCollectionActions';
+import { saveCollection } from '../../store/collectionsActions';
 
 interface P {
   addItem: (config: { word: string; translation: string }) => any;
@@ -45,15 +46,12 @@ const CollectionItemInput: React.FC<P> = ({ addItem }) => {
 };
 
 CollectionItemInput.propTypes = {
-  addItem: PropTypes.func.isRequired
-};
-
-CollectionItemInput.defaultProps = {
-  addItem: () => {}
+  addItem: PropTypes.func.isRequired,
 };
 
 const mapDispatchToProps = {
-  addItem
+  addItem,
+  saveCollection
 };
 
 export default connect(null, mapDispatchToProps)(CollectionItemInput);
