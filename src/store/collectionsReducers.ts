@@ -4,8 +4,9 @@ import {
   COLLECTION_EDIT
 } from './collectionsActions';
 import { Collection, MyAction } from './newCollectionReducers';
+import collectionsMock from './collectionsMock';
 
-const colelctionsInitialState: Collection[] = [];
+const colelctionsInitialState: Collection[] = collectionsMock;
 
 export function collections(
   state = colelctionsInitialState,
