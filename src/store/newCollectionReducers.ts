@@ -6,9 +6,15 @@ import {
   TITLE_EDIT
 } from './newCollectionActions';
 
+export interface CollectionItem {
+  id: number;
+  word: string;
+  translation: string;
+}
+
 export interface Collection {
   title: string;
-  collection: any[];
+  collection: CollectionItem[];
 }
 
 export interface MyAction<P> {
@@ -16,37 +22,41 @@ export interface MyAction<P> {
   payload: P;
 }
 
-const newCollectionInitialState: Collection = {
+export const collectionInitialState: Collection = {
   title: '',
   collection: []
 };
 
 export function newCollection(
-  state = newCollectionInitialState,
-  action: MyAction<any>
+  state = collectionInitialState,
+  action: MyAction<CollectionItem | number | string>
 ) {
   const { type, payload } = action;
   switch (type) {
     case ITEM_ADD:
-      return { title: state.title, collection: [...state.collection, payload] };
+      const newItem = payload as CollectionItem;
+      return { title: state.title, collection: [...state.collection, newItem] };
     case TITLE_ADD:
     case TITLE_EDIT:
-      return { ...state, title: payload.title };
+      const newTitle = payload as string;
+      return { ...state, title: newTitle };
     case ITEM_REMOVE:
+      const itemId = payload as number;
       return {
         title: state.title,
-        collection: [...state.collection.filter(item => item.id !== payload.id)]
+        collection: [...state.collection.filter(item => item.id !== itemId)]
       };
     case ITEM_UPDATE:
+      const updatedItem = payload as CollectionItem;
       return {
         title: state.title,
         collection: [
           ...state.collection.map(item =>
-            item.id === payload.id
+            item.id === updatedItem.id
               ? {
-                  id: payload.id,
-                  word: payload.word,
-                  translation: payload.translation
+                  id: updatedItem.id,
+                  word: updatedItem.word,
+                  translation: updatedItem.translation
                 }
               : item
           )

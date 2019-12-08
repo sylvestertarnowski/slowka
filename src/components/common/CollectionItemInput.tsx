@@ -4,9 +4,10 @@ import _uniqueId from 'lodash/uniqueId';
 import { connect } from 'react-redux';
 import { addItem } from '../../store/newCollectionActions';
 import { saveCollection } from '../../store/collectionsActions';
+import { CollectionItem } from '../../store/newCollectionReducers';
 
 interface P {
-  addItem: (config: { word: string; translation: string }) => any;
+  addItem: (config: CollectionItem) => any;
 }
 
 const CollectionItemInput: React.FC<P> = ({ addItem }) => {
@@ -18,10 +19,10 @@ const CollectionItemInput: React.FC<P> = ({ addItem }) => {
 
   const handleClick = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     e.preventDefault();
-    addItem({ word, translation });
+    addItem({ id: parseInt(_uniqueId(), 10), word, translation });
     setWord('');
     setTranslation('');
-    firstInput.current && firstInput.current.focus()
+    firstInput.current && firstInput.current.focus();
   };
 
   return (

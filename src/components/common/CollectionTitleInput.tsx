@@ -7,11 +7,7 @@ import _uniqueId from 'lodash/uniqueId';
 
 interface P {
   title: string;
-  addTitle: ({
-    title
-  }: {
-    title: string;
-  }) => { type: string; payload: { title: string } };
+  addTitle: (title: string) => { type: string; payload: string };
 }
 
 const CollectionTitleInput: React.FC<P> = ({ addTitle, title }) => {
@@ -24,7 +20,7 @@ const CollectionTitleInput: React.FC<P> = ({ addTitle, title }) => {
         id={titleId}
         type="text"
         value={title}
-        onChange={e => addTitle({ title: e.target.value })}
+        onChange={e => addTitle(e.target.value)}
       />
     </label>
   );

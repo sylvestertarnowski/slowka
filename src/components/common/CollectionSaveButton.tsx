@@ -7,11 +7,11 @@ import { GlobalStore } from '../../store';
 
 interface P {
   newCollection: Collection;
-  saveCollection: (config: {
-    collection: Collection;
-  }) => {
+  saveCollection: (
+    config: Collection
+  ) => {
     type: string;
-    payload: { collection: Collection };
+    payload: Collection;
   };
   collections: Collection[];
 }
@@ -31,7 +31,7 @@ const CollectionSaveButton: React.FC<P> = ({
     if (isTitleTaken) {
       setShowWarning(true);
     } else {
-      saveCollection({ collection: newCollection });
+      saveCollection(newCollection);
       setShowWarning(false);
       setShowSuccess(true);
     }
