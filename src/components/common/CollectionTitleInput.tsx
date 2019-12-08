@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { GlobalStore } from '../../store';
 import { addTitle } from '../../store/newCollectionActions';
+import _uniqueId from 'lodash/uniqueId';
 
 interface P {
   title: string;
@@ -14,12 +15,18 @@ interface P {
 }
 
 const CollectionTitleInput: React.FC<P> = ({ addTitle, title }) => {
+  const [titleId] = useState(_uniqueId('new-list-title-'));
+
   return (
-    <input
-      type="text"
-      value={title}
-      onChange={e => addTitle({ title: e.target.value })}
-    />
+    <label htmlFor={titleId}>
+      Title:
+      <input
+        id={titleId}
+        type="text"
+        value={title}
+        onChange={e => addTitle({ title: e.target.value })}
+      />
+    </label>
   );
 };
 
